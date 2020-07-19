@@ -65,8 +65,8 @@ public class UsuarioController {
 		return new ResponseEntity<Usuario>(obj, HttpStatus.OK);
 		
 	}
-	
-	@DeleteMapping("{id}")
+
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Usuario> eliminar(@PathVariable("id") Integer id){
 		
 		Usuario usuario = service.leerPorId(id);
@@ -79,6 +79,7 @@ public class UsuarioController {
 		
 		return this.modificar(usuario);
 	}
+	
 
 	
 }

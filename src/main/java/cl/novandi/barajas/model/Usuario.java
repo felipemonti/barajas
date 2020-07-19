@@ -3,17 +3,16 @@ package cl.novandi.barajas.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -45,10 +44,13 @@ public class Usuario {
 	@JoinColumn(name = "id_estado", nullable = false, foreignKey = @ForeignKey(name="FK_usuario_estado"))
 	private Estado estado;
 
+	/*
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "usuario_coleccion"
 			, joinColumns = @JoinColumn(name="id_usuario", referencedColumnName = "id")
 			, inverseJoinColumns = @JoinColumn(name="id_coleccion", referencedColumnName = "id"))
+	*/
+	@OneToMany(mappedBy = "usuario", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<Coleccion> colecciones;
 
 	public Integer getId() {

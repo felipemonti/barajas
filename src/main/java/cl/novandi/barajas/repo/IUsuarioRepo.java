@@ -6,5 +6,6 @@ import cl.novandi.barajas.model.Usuario;
 
 public interface IUsuarioRepo extends JpaRepository<Usuario,Integer> {
 
-
+	Usuario findOneByEmail(String email);
+	
 }

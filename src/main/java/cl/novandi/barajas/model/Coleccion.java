@@ -42,9 +42,6 @@ public class Coleccion {
 			, joinColumns = @JoinColumn(name="id_coleccion", referencedColumnName = "id")
 			, inverseJoinColumns = @JoinColumn(name="id_baraja", referencedColumnName = "id"))
 	private List<Baraja> barajas;
-
-	
-	
 	
 	public Integer getId() {
 		return id;
